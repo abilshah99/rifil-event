@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashangi & Kifil's Cocktail Party</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #FEFBF0;
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23EAB308' stroke-width='1' fill='none' opacity='0.1' stroke-linecap='round'%3E%3C!-- Martini Glass --%3E%3Cpath d='M 30 70 L 50 50 L 70 70 Z'/%3E%3Cpath d='M 50 70 L 50 90'/%3E%3Cpath d='M 40 90 H 60'/%3E%3C!-- Coupe Glass --%3E%3Cpath d='M 120 40 C 120 60, 160 60, 160 40' /%3E%3Cpath d='M 140 40 V 60' /%3E%3Cpath d='M 130 60 H 150' /%3E%3C!-- Rocks Glass --%3E%3Cpath d='M 40 130 L 35 160 L 65 160 L 60 130 Z' /%3E%3C!-- Highball --%3E%3Cpath d='M 130 110 V 150 H 150 V 110' /%3E%3C/g%3E%3C/svg%3E");
+        }
+        .font-dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        .text-gold { color: #D69E2E; }
+        .text-deep-pink { color: #EC4899; }
+        .btn-upload {
+            background-color: #EC4899;
+            color: white;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        .btn-upload:hover {
+            background-color: #db2777;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-md mx-auto text-center bg-white/70 backdrop-blur-sm p-8 rounded-xl shadow-2xl">
+        
+        <h1 class="font-dancing-script text-5xl text-gold">Shashangi & Kifil</h1>
+        <p class="text-gray-600 mt-1 mb-6 text-lg">Cocktail Party</p>
+        
+        <p class="text-gray-800 mb-6">Spotted a great moment? Share the photo with everyone!</p>
+
+        <!-- The file input is visually hidden, but triggered by the button -->
+        <input type="file" id="photo-upload" class="hidden" accept="image/*">
+        
+        <!-- This button will trigger the hidden file input -->
+        <button onclick="document.getElementById('photo-upload').click()" class="btn-upload font-bold py-3 px-8 rounded-full shadow-lg text-lg">
+            Upload Your Photo
+        </button>
+
+        <!-- A message area that will show status to the user -->
+        <div id="message-area" class="mt-6 text-gray-700 h-5"></div>
+    </div>
+
+    <script>
+        // This script provides feedback to the user when they select a file.
+        const fileInput = document.getElementById('photo-upload');
+        const messageArea = document.getElementById('message-area');
+
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                // A real implementation would upload the file here.
+                // For now, we'll just show a success message.
+                messageArea.textContent = 'Thank you! Your photo has been submitted.';
+                
+                // Clear the message after a few seconds
+                setTimeout(() => {
+                    messageArea.textContent = '';
+                }, 4000);
+            }
+        });
+    </script>
+
+</body>
+</html>
