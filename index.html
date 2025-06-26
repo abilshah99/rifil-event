@@ -39,6 +39,12 @@
         .btn-pink:hover {
              background-color: #db2777;
         }
+        .btn-blue {
+             background-color: #3b82f6;
+        }
+        .btn-blue:hover {
+            background-color: #2563eb;
+        }
         .btn-gray {
              background-color: #6b7280;
         }
@@ -54,7 +60,7 @@
         <h1 class="font-dancing-script text-5xl text-gold">Shashangi & Kifil</h1>
         <p class="text-gray-600 mt-1 mb-6 text-lg">Cocktail Party</p>
         
-        <p id="instruction-text" class="text-gray-800 mb-6 h-5"></p>
+        <p id="instruction-text" class="text-gray-800 mb-6 font-semibold h-5"></p>
 
         <!-- Hidden file input that the button will trigger to open the camera -->
         <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
@@ -62,31 +68,33 @@
         <div class="space-y-4">
             <!-- Button to open camera -->
             <button onclick="document.getElementById('photo-upload').click()" class="btn btn-pink text-lg">
-                Add Your Photo
+                Step 1: Take Your Photo
             </button>
             
-            <!-- Button to view the album -->
-            <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="btn btn-gray text-lg">
-                View the Party Album
+            <!-- Button to go to the album -->
+            <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="btn btn-blue text-lg">
+                Step 2: Add to Album
             </a>
         </div>
+
+        <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="text-gray-600 hover:text-blue-600 mt-8 inline-block">
+            Or, just view the Party Album
+        </a>
     </div>
 
     <script>
         const fileInput = document.getElementById('photo-upload');
         const instructionText = document.getElementById('instruction-text');
-        const googlePhotosLink = "https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl";
-
-        // When a photo is taken, redirect the user to the Google Photos album
+        
+        // Give feedback when a photo is taken.
         fileInput.addEventListener('change', function() {
             if (this.files && this.files.length > 0) {
-                // Let the user know what to do next
-                instructionText.textContent = 'Redirecting to upload...';
+                instructionText.textContent = 'Great shot! Now tap Step 2.';
                 
-                // Wait a moment before redirecting so the user sees the message
+                // Clear the message after a few seconds
                 setTimeout(() => {
-                    window.location.href = googlePhotosLink;
-                }, 1000);
+                    instructionText.textContent = '';
+                }, 4000);
             }
         });
     </script>
