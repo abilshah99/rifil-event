@@ -23,7 +23,7 @@
             transition: all 0.3s ease;
             color: white;
             font-weight: bold;
-            padding: 1rem 2rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 9999px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             display: block;
@@ -39,6 +39,12 @@
         .btn-pink:hover {
              background-color: #db2777;
         }
+        .btn-gray {
+             background-color: #6b7280;
+        }
+        .btn-gray:hover {
+            background-color: #4b5563;
+        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
@@ -48,18 +54,42 @@
         <h1 class="font-dancing-script text-5xl text-gold">Shashangi & Kifil</h1>
         <p class="text-gray-600 mt-1 mb-6 text-lg">Cocktail Party</p>
         
-        <p id="instruction-text" class="text-gray-800 mb-6">Tap the button below, then look for the 'Add photos' icon to share your picture!</p>
+        <p id="instruction-text" class="text-gray-800 mb-6 h-5"></p>
 
-        <!-- A single, direct link to the Google Photos album -->
-        <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="btn btn-pink text-lg">
-            Add Your Photo to the Album
-        </a>
+        <!-- Hidden file input that the button will trigger to open the camera -->
+        <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
         
-        <!-- Link to view the album -->
-        <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="text-gray-600 hover:text-blue-600 mt-8 inline-block">
-            View the Party Album
-        </a>
+        <div class="space-y-4">
+            <!-- Button to open camera -->
+            <button onclick="document.getElementById('photo-upload').click()" class="btn btn-pink text-lg">
+                Add Your Photo
+            </button>
+            
+            <!-- Button to view the album -->
+            <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="btn btn-gray text-lg">
+                View the Party Album
+            </a>
+        </div>
     </div>
+
+    <script>
+        const fileInput = document.getElementById('photo-upload');
+        const instructionText = document.getElementById('instruction-text');
+        const googlePhotosLink = "https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl";
+
+        // When a photo is taken, redirect the user to the Google Photos album
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                // Let the user know what to do next
+                instructionText.textContent = 'Redirecting to upload...';
+                
+                // Wait a moment before redirecting so the user sees the message
+                setTimeout(() => {
+                    window.location.href = googlePhotosLink;
+                }, 1000);
+            }
+        });
+    </script>
 
 </body>
 </html>
