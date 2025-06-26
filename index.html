@@ -20,26 +20,29 @@
         .text-gold { color: #D69E2E; }
         .text-deep-pink { color: #EC4899; }
         .btn {
-            transition: background-color 0.3s, transform 0.2s;
+            transition: all 0.3s ease;
             color: white;
             font-weight: bold;
-            padding: 0.75rem 2rem;
+            padding: 1rem 2rem;
             border-radius: 9999px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: block;
+            width: 100%;
+            text-align: center;
         }
         .btn:hover {
             transform: scale(1.05);
         }
-        .btn-camera {
+        .btn-pink {
              background-color: #EC4899;
         }
-        .btn-camera:hover {
+        .btn-pink:hover {
              background-color: #db2777;
         }
-        .btn-drive {
+        .btn-blue {
             background-color: #3b82f6;
         }
-         .btn-drive:hover {
+         .btn-blue:hover {
             background-color: #2563eb;
         }
     </style>
@@ -51,40 +54,51 @@
         <h1 class="font-dancing-script text-5xl text-gold">Shashangi & Kifil</h1>
         <p class="text-gray-600 mt-1 mb-6 text-lg">Cocktail Party</p>
         
-        <p class="text-gray-800 mb-6">Follow these two easy steps to share your photos with everyone!</p>
+        <p id="instruction-text" class="text-gray-800 mb-6">Tap the button to open your camera and share a photo from the party!</p>
 
-        <!-- The file input is visually hidden, but lets us trigger the camera -->
+        <!-- This single button will change its function -->
+        <a id="action-button" href="#" class="btn btn-pink text-lg">
+            Take & Share Photo
+        </a>
+        
+        <!-- Hidden file input that the button will trigger -->
         <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
-        
-        <div class="space-y-4">
-            <!-- Step 1: Open Camera -->
-            <button onclick="document.getElementById('photo-upload').click()" class="btn btn-camera w-full text-lg">
-                <span class="font-bold">Step 1:</span> Open Camera & Take Photo
-            </button>
-            
-            <!-- Step 2: Link to Google Drive -->
-            <a href="https://drive.google.com/drive/u/0/folders/1SO-f_K_szakMoSdy4kL0C20q8PJdMoGT" target="_blank" class="btn btn-drive w-full text-lg inline-block">
-                <span class="font-bold">Step 2:</span> Upload to Shared Album
-            </a>
-        </div>
-        
-        <!-- A message area that will show status to the user -->
-        <div id="message-area" class="mt-6 text-gray-700 h-5 font-semibold"></div>
+
+        <!-- Link to view the album -->
+        <a href="https://drive.google.com/drive/u/0/folders/1SO-f_K_szakMoSdy4kL0C20q8PJdMoGT" target="_blank" class="text-gray-600 hover:text-blue-600 mt-8 inline-block">
+            View the Party Album
+        </a>
     </div>
 
     <script>
         const fileInput = document.getElementById('photo-upload');
-        const messageArea = document.getElementById('message-area');
+        const actionButton = document.getElementById('action-button');
+        const instructionText = document.getElementById('instruction-text');
+        const googleDriveLink = "https://drive.google.com/drive/u/0/folders/1SO-f_K_szakMoSdy4kL0C20q8PJdMoGT";
 
+        // Step 1: When the main button is clicked, trigger the hidden file input
+        actionButton.addEventListener('click', function(e) {
+            // Only trigger the file input if the button is in its initial "take photo" state
+            if (actionButton.href.endsWith('#')) {
+                e.preventDefault(); // Prevent the link from being followed
+                fileInput.click();
+            }
+        });
+
+        // Step 2: When a file is selected (a photo is taken), change the button's purpose
         fileInput.addEventListener('change', function() {
             if (this.files && this.files.length > 0) {
-                // Let the user know the photo is ready to be uploaded.
-                messageArea.textContent = 'Great! Now tap Step 2 to upload.';
-                
-                // Clear the message after a few seconds
-                setTimeout(() => {
-                    messageArea.textContent = '';
-                }, 5000);
+                // Update instruction text
+                instructionText.textContent = 'Great shot! Now tap the button below to add it to the shared album.';
+
+                // Change button text and style
+                actionButton.textContent = 'Tap Here to Upload';
+                actionButton.classList.remove('btn-pink');
+                actionButton.classList.add('btn-blue');
+
+                // Change button link to point to Google Drive
+                actionButton.href = googleDriveLink;
+                actionButton.target = "_blank"; // Open in a new tab
             }
         });
     </script>
