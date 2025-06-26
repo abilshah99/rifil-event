@@ -39,12 +39,6 @@
         .btn-pink:hover {
              background-color: #db2777;
         }
-        .btn-blue {
-            background-color: #3b82f6;
-        }
-         .btn-blue:hover {
-            background-color: #2563eb;
-        }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
@@ -54,54 +48,18 @@
         <h1 class="font-dancing-script text-5xl text-gold">Shashangi & Kifil</h1>
         <p class="text-gray-600 mt-1 mb-6 text-lg">Cocktail Party</p>
         
-        <p id="instruction-text" class="text-gray-800 mb-6">Tap the button to open your camera and share a photo from the party!</p>
+        <p id="instruction-text" class="text-gray-800 mb-6">Tap the button below, then look for the 'Add photos' icon to share your picture!</p>
 
-        <!-- This single button will change its function -->
-        <a id="action-button" href="#" class="btn btn-pink text-lg">
-            Take & Share Photo
+        <!-- A single, direct link to the Google Photos album -->
+        <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="btn btn-pink text-lg">
+            Add Your Photo to the Album
         </a>
         
-        <!-- Hidden file input that the button will trigger -->
-        <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
-
         <!-- Link to view the album -->
-        <a href="https://drive.google.com/drive/u/0/folders/1SO-f_K_szakMoSdy4kL0C20q8PJdMoGT" target="_blank" class="text-gray-600 hover:text-blue-600 mt-8 inline-block">
+        <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="text-gray-600 hover:text-blue-600 mt-8 inline-block">
             View the Party Album
         </a>
     </div>
-
-    <script>
-        const fileInput = document.getElementById('photo-upload');
-        const actionButton = document.getElementById('action-button');
-        const instructionText = document.getElementById('instruction-text');
-        const googleDriveLink = "https://drive.google.com/drive/u/0/folders/1SO-f_K_szakMoSdy4kL0C20q8PJdMoGT";
-
-        // Step 1: When the main button is clicked, trigger the hidden file input
-        actionButton.addEventListener('click', function(e) {
-            // Only trigger the file input if the button is in its initial "take photo" state
-            if (actionButton.href.endsWith('#')) {
-                e.preventDefault(); // Prevent the link from being followed
-                fileInput.click();
-            }
-        });
-
-        // Step 2: When a file is selected (a photo is taken), change the button's purpose
-        fileInput.addEventListener('change', function() {
-            if (this.files && this.files.length > 0) {
-                // Update instruction text
-                instructionText.textContent = 'Great shot! Now tap the button below to add it to the shared album.';
-
-                // Change button text and style
-                actionButton.textContent = 'Tap Here to Upload';
-                actionButton.classList.remove('btn-pink');
-                actionButton.classList.add('btn-blue');
-
-                // Change button link to point to Google Drive
-                actionButton.href = googleDriveLink;
-                actionButton.target = "_blank"; // Open in a new tab
-            }
-        });
-    </script>
 
 </body>
 </html>
