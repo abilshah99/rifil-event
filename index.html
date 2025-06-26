@@ -19,14 +19,28 @@
         }
         .text-gold { color: #D69E2E; }
         .text-deep-pink { color: #EC4899; }
-        .btn-upload {
-            background-color: #EC4899;
-            color: white;
+        .btn {
             transition: background-color 0.3s, transform 0.2s;
+            color: white;
+            font-weight: bold;
+            padding: 0.75rem 2rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        .btn-upload:hover {
-            background-color: #db2777;
+        .btn:hover {
             transform: scale(1.05);
+        }
+        .btn-camera {
+             background-color: #EC4899;
+        }
+        .btn-camera:hover {
+             background-color: #db2777;
+        }
+        .btn-drive {
+            background-color: #3b82f6;
+        }
+         .btn-drive:hover {
+            background-color: #2563eb;
         }
     </style>
 </head>
@@ -37,35 +51,40 @@
         <h1 class="font-dancing-script text-5xl text-gold">Shashangi & Kifil</h1>
         <p class="text-gray-600 mt-1 mb-6 text-lg">Cocktail Party</p>
         
-        <p class="text-gray-800 mb-6">Spotted a great moment? Share the photo with everyone!</p>
+        <p class="text-gray-800 mb-6">Follow these two easy steps to share your photos with everyone!</p>
 
-        <!-- The file input is visually hidden, but triggered by the button -->
-        <input type="file" id="photo-upload" class="hidden" accept="image/*">
+        <!-- The file input is visually hidden, but lets us trigger the camera -->
+        <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
         
-        <!-- This button will trigger the hidden file input -->
-        <button onclick="document.getElementById('photo-upload').click()" class="btn-upload font-bold py-3 px-8 rounded-full shadow-lg text-lg">
-            Upload Your Photo
-        </button>
-
+        <div class="space-y-4">
+            <!-- Step 1: Open Camera -->
+            <button onclick="document.getElementById('photo-upload').click()" class="btn btn-camera w-full text-lg">
+                <span class="font-bold">Step 1:</span> Open Camera & Take Photo
+            </button>
+            
+            <!-- Step 2: Link to Google Drive -->
+            <a href="https://drive.google.com/drive/u/0/folders/1SO-f_K_szakMoSdy4kL0C20q8PJdMoGT" target="_blank" class="btn btn-drive w-full text-lg inline-block">
+                <span class="font-bold">Step 2:</span> Upload to Shared Album
+            </a>
+        </div>
+        
         <!-- A message area that will show status to the user -->
-        <div id="message-area" class="mt-6 text-gray-700 h-5"></div>
+        <div id="message-area" class="mt-6 text-gray-700 h-5 font-semibold"></div>
     </div>
 
     <script>
-        // This script provides feedback to the user when they select a file.
         const fileInput = document.getElementById('photo-upload');
         const messageArea = document.getElementById('message-area');
 
         fileInput.addEventListener('change', function() {
             if (this.files && this.files.length > 0) {
-                // A real implementation would upload the file here.
-                // For now, we'll just show a success message.
-                messageArea.textContent = 'Thank you! Your photo has been submitted.';
+                // Let the user know the photo is ready to be uploaded.
+                messageArea.textContent = 'Great! Now tap Step 2 to upload.';
                 
                 // Clear the message after a few seconds
                 setTimeout(() => {
                     messageArea.textContent = '';
-                }, 4000);
+                }, 5000);
             }
         });
     </script>
