@@ -52,26 +52,26 @@
                 <br>
                 <span class="text-brand-gold">Shashangi & Kifil</span>
             </h1>
-            <h2 class="text-gray-400 font-bold tracking-wider mt-2">#RiFil</h2>
+            <p class="text-sm text-gray-500 mt-4"><span class="font-bold text-gray-600">#RiFil</span> For the stories you'll tell tomorrow.</p>
         </header>
 
         <!-- Main Photo Upload Card -->
         <main class="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-xl mb-12">
-            <p class="text-gray-700 text-lg mb-4">Caught a moment? Share it!</p>
-            <p id="instruction-text" class="text-brand-pink font-bold h-6 mb-4 transition-all duration-300"></p>
-
-            <!-- Hidden file input for camera access -->
-            <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
+            <h3 class="font-bold text-xl text-gray-800 mb-4">How to Share Your Photos</h3>
+            <ol class="text-left space-y-3 text-gray-600 mb-6">
+                <li class="flex items-start">
+                    <span class="font-bold text-brand-pink mr-3">1.</span>
+                    <span>Take pictures using your phone's native camera app.</span>
+                </li>
+                <li class="flex items-start">
+                    <span class="font-bold text-brand-pink mr-3">2.</span>
+                    <span>Come back here and tap the button below to add them to our shared album.</span>
+                </li>
+            </ol>
             
             <div class="space-y-4">
-                <!-- Step 1: Take Photo Button -->
-                <button onclick="document.getElementById('photo-upload').click()" class="btn w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 rounded-full text-lg">
-                    Step 1: Take Your Photo
-                </button>
-                
-                <!-- Step 2: Add to Album Button -->
-                <a href="https://photos.app.goo.gl/m15FUJ4VhDLcsRQ3A" target="_blank" class="btn block w-full bg-gradient-to-r from-blue-500 to-sky-500 text-white font-bold py-3 rounded-full text-lg">
-                    Step 2: Add to Our Album
+                <a href="https://photos.app.goo.gl/m15FUJ4VhDLcsRQ3A" target="_blank" class="btn block w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 rounded-full text-lg">
+                    Add to Album
                 </a>
             </div>
              <a href="https://photos.app.goo.gl/m15FUJ4VhDLcsRQ3A" target="_blank" class="text-gray-500 hover:text-blue-600 mt-6 inline-block">
@@ -156,23 +156,9 @@
             </div>
         </section>
 
-        <!-- Party Highlights Section -->
-        <section id="highlights" class="mb-12">
-            <h3 class="font-great-vibes text-5xl text-brand-gold mb-4">Party Highlights</h3>
-            <div class="grid grid-cols-2 gap-4">
-                <!-- Paste the direct image links from Google Photos into the src attribute below -->
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczOaU59xO6XgYwA-yXvB6rZq-O-k_pG-3nF-V8jZ-qjY_y-dJ_lR_A=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczNvq8-f4C-YlW-e-yR-s_X-r_A-t_V-c_Y-p_E-j_Z-q_A=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczP8x-k_r_A-Y_l-V_B-j_Z-q_A-t_V-c_Y-p_E-s_X-r=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
-                <img src="https://lh3.googleusercontent.com/pw/AP1GczN-O-k_pG-3nF-V8jZ-qjY_y-dJ_lR_A-t_V-c_Y-p_E=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
-            </div>
-            <p class="text-gray-600 mt-4">A few of our favorite moments! See them all in the main album.</p>
-        </section>
-
         <!-- New HTML Menu Section with SVG Icons -->
         <section id="menu" class="mb-12 custom-card">
-            <h3 class="font-great-vibes text-6xl text-brand-pink mb-2">Menu</h3>
-            <p class="text-sm text-gray-500 mb-8"><span class="font-bold text-gray-400">#RiFil</span> For the stories you'll tell tomorrow.</p>
+            <h3 class="font-great-vibes text-6xl text-brand-pink mb-8">Menu</h3>
 
             <div class="space-y-8 text-left">
                 <!-- Jungle Juice -->
@@ -244,23 +230,6 @@
         </section>
 
     </div>
-
-    <script>
-        const fileInput = document.getElementById('photo-upload');
-        const instructionText = document.getElementById('instruction-text');
-        
-        // Give feedback to the user after they take a photo.
-        fileInput.addEventListener('change', function() {
-            if (this.files && this.files.length > 0) {
-                instructionText.textContent = 'Great shot! Now tap Step 2.';
-                
-                // Clear the message after a few seconds to keep the UI clean
-                setTimeout(() => {
-                    instructionText.textContent = '';
-                }, 4000);
-            }
-        });
-    </script>
 
 </body>
 </html>
