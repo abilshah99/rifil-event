@@ -3,95 +3,258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shashangi & Kifil's Cocktail Party</title>
+    <title>Cheers to Shashangi & Kifil</title>
+    <!-- Tailwind CSS for rapid UI development -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for the elegant typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        /* Custom styles to match the aesthetic */
+        html {
+            scroll-behavior: smooth;
+        }
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: #FEFBF0;
-            background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg stroke='%23EAB308' stroke-width='1' fill='none' opacity='0.1' stroke-linecap='round'%3E%3C!-- Martini Glass --%3E%3Cpath d='M 30 70 L 50 50 L 70 70 Z'/%3E%3Cpath d='M 50 70 L 50 90'/%3E%3Cpath d='M 40 90 H 60'/%3E%3C!-- Coupe Glass --%3E%3Cpath d='M 120 40 C 120 60, 160 60, 160 40' /%3E%3Cpath d='M 140 40 V 60' /%3E%3Cpath d='M 130 60 H 150' /%3E%3C!-- Rocks Glass --%3E%3Cpath d='M 40 130 L 35 160 L 65 160 L 60 130 Z' /%3E%3C!-- Highball --%3E%3Cpath d='M 130 110 V 150 H 150 V 110' /%3E%3C/g%3E%3C/svg%3E");
+            font-family: 'Montserrat', sans-serif;
+            /* Using the elegant paper/noise texture from our previous design */
+            background-color: #FDFBF5; 
+            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"%3E%3Cg fill="none" stroke="%23EFEBE5" stroke-width="1"%3E%3Cpath d="M769 229L1037 260.9M927 880L731 737 520 677 440 599 237 524 151 472 23 474 363 436 442 410 549 378 597 341 685 284 731 257 860 221 850 181 927 150 1029 125 1089 113 1125 99 1200 70 1280 40 1325 25 1380 15 1450 5 1525 0 1580-5 1660-15 1725-25 1800-40 1875-70 1950-99 2025-113 2100-125 2175-150 2250-181 2325-221 2400-257 2475-284 2550-341 2625-378 2700-410 2775-436 2850-474 2925-472 3000-524 3075-599 3150-677 3225-737 3300-880M18 625L-65 617M340 900L-30 850M-50 550L280 500M505 849L400 800M-25 350L400 250M870 870L700 700M86 374L240 333M350 310L490 220M-40 200L100 100M400 100L200 0M-30 40L200 200M-20 600L200 800M820 400L400 400M850 20L1200 300"%3E%3C/path%3E%3C/g%3E%3C/svg%3E');
         }
-        .font-dancing-script {
-            font-family: 'Dancing Script', cursive;
+        .font-great-vibes {
+            font-family: 'Great Vibes', cursive;
         }
-        .text-gold { color: #D69E2E; }
-        .text-deep-pink { color: #EC4899; }
+        .text-brand-pink { color: #E57399; }
+        .text-brand-gold { color: #C5A348; }
         .btn {
             transition: all 0.3s ease;
-            color: white;
-            font-weight: bold;
-            padding: 0.75rem 1.5rem;
-            border-radius: 9999px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            display: block;
-            width: 100%;
-            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .btn:hover {
-            transform: scale(1.05);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.15);
         }
-        .btn-pink {
-             background-color: #EC4899;
-        }
-        .btn-pink:hover {
-             background-color: #db2777;
-        }
-        .btn-blue {
-             background-color: #3b82f6;
-        }
-        .btn-blue:hover {
-            background-color: #2563eb;
-        }
-        .btn-gray {
-             background-color: #6b7280;
-        }
-        .btn-gray:hover {
-            background-color: #4b5563;
+        .custom-card {
+            border: 2px dashed #C5A348;
+            padding: 2rem;
+            border-radius: 1.5rem;
         }
     </style>
 </head>
 <body class="flex items-center justify-center min-h-screen p-4">
 
-    <div class="w-full max-w-md mx-auto text-center bg-white/70 backdrop-blur-sm p-8 rounded-xl shadow-2xl">
+    <div class="w-full max-w-md mx-auto text-center">
         
-        <h1 class="font-dancing-script text-5xl text-gold">Shashangi & Kifil</h1>
-        <p class="text-gray-600 mt-1 mb-6 text-lg">Cocktail Party</p>
-        
-        <p id="instruction-text" class="text-gray-800 mb-6 font-semibold h-5"></p>
+        <!-- Header Section -->
+        <header class="mb-8">
+            <h1 class="font-great-vibes text-6xl leading-none">
+                <span class="text-brand-pink text-4xl">Cheers to</span>
+                <br>
+                <span class="text-brand-gold">Shashangi & Kifil</span>
+            </h1>
+            <h2 class="text-gray-400 font-bold tracking-wider mt-2">#RiFil</h2>
+        </header>
 
-        <!-- Hidden file input that the button will trigger to open the camera -->
-        <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
-        
-        <div class="space-y-4">
-            <!-- Button to open camera -->
-            <button onclick="document.getElementById('photo-upload').click()" class="btn btn-pink text-lg">
-                Step 1: Take Your Photo
-            </button>
+        <!-- Main Photo Upload Card -->
+        <main class="bg-white/80 backdrop-blur-sm p-6 md:p-8 rounded-2xl shadow-xl mb-12">
+            <p class="text-gray-700 text-lg mb-4">Caught a moment? Share it!</p>
+            <p id="instruction-text" class="text-brand-pink font-bold h-6 mb-4 transition-all duration-300"></p>
+
+            <!-- Hidden file input for camera access -->
+            <input type="file" id="photo-upload" class="hidden" accept="image/*" capture="environment">
             
-            <!-- Button to go to the album -->
-            <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="btn btn-blue text-lg">
-                Step 2: Add to Album
+            <div class="space-y-4">
+                <!-- Step 1: Take Photo Button -->
+                <button onclick="document.getElementById('photo-upload').click()" class="btn w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 rounded-full text-lg">
+                    Step 1: Take Your Photo
+                </button>
+                
+                <!-- Step 2: Add to Album Button -->
+                <a href="https://photos.app.goo.gl/m15FUJ4VhDLcsRQ3A" target="_blank" class="btn block w-full bg-gradient-to-r from-blue-500 to-sky-500 text-white font-bold py-3 rounded-full text-lg">
+                    Step 2: Add to Our Album
+                </a>
+            </div>
+             <a href="https://photos.app.goo.gl/m15FUJ4VhDLcsRQ3A" target="_blank" class="text-gray-500 hover:text-blue-600 mt-6 inline-block">
+                Or, just view the Party Album
             </a>
-        </div>
+        </main>
 
-        <a href="https://photos.google.com/album/AF1QipPOGu9Nl4kb1rbYKrQXewlkWzdgnf7SgP44n3gl" target="_blank" class="text-gray-600 hover:text-blue-600 mt-8 inline-block">
-            Or, just view the Party Album
-        </a>
+        <!-- Events for the Day Section -->
+        <section id="events" class="mb-12 custom-card">
+            <h3 class="font-great-vibes text-5xl text-brand-gold mb-6">Events for the Day</h3>
+            <div class="space-y-6 text-left">
+                <!-- Live Slideshow -->
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 flex-shrink-0 text-brand-pink mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Live Photo Slideshow</h4>
+                        <p class="text-sm text-gray-600">Pictures added through the QR code will be displayed live on TV.</p>
+                    </div>
+                </div>
+                <!-- Photo Lane -->
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 flex-shrink-0 text-brand-pink mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Photo Lane</h4>
+                        <p class="text-sm text-gray-600">A line of our photos at the entrance showing us "through the years."</p>
+                    </div>
+                </div>
+                <!-- BBQ -->
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 flex-shrink-0 text-brand-pink mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.C14 5 16.09 5.777 17.657 7.343A8 8 0 0117.657 18.657z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.879 16.121A3 3 0 1014.12 11.88a3 3 0 00-4.242 4.242z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">BBQ</h4>
+                        <p class="text-sm text-gray-600">Enjoy some delicious grilled treats.</p>
+                    </div>
+                </div>
+                <!-- Pool Party -->
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 flex-shrink-0 text-brand-pink mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Pool Party</h4>
+                        <p class="text-sm text-gray-600">Take a dip and cool off!</p>
+                    </div>
+                </div>
+                <!-- DJ -->
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 flex-shrink-0 text-brand-pink mt-1">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">DJ</h4>
+                        <p class="text-sm text-gray-600">Get ready to dance to some amazing beats.</p>
+                    </div>
+                </div>
+                <!-- Open Mic -->
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 flex-shrink-0 text-brand-pink mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Open Mic</h4>
+                        <p class="text-sm text-gray-600">A time for anyone to share roasts, toasts, or funny stories.</p>
+                    </div>
+                </div>
+                <!-- Compliments Jar -->
+                <div class="flex items-start space-x-4">
+                    <div class="w-8 h-8 flex-shrink-0 text-brand-pink mt-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Compliments Jar</h4>
+                        <p class="text-sm text-gray-600">Write nice things about other guests! They will be read during the thank you speech.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Party Highlights Section -->
+        <section id="highlights" class="mb-12">
+            <h3 class="font-great-vibes text-5xl text-brand-gold mb-4">Party Highlights</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <!-- Paste the direct image links from Google Photos into the src attribute below -->
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczOaU59xO6XgYwA-yXvB6rZq-O-k_pG-3nF-V8jZ-qjY_y-dJ_lR_A=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczNvq8-f4C-YlW-e-yR-s_X-r_A-t_V-c_Y-p_E-j_Z-q_A=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczP8x-k_r_A-Y_l-V_B-j_Z-q_A-t_V-c_Y-p_E-s_X-r=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
+                <img src="https://lh3.googleusercontent.com/pw/AP1GczN-O-k_pG-3nF-V8jZ-qjY_y-dJ_lR_A-t_V-c_Y-p_E=w1080-h1920-no" alt="Highlight from the party" class="rounded-xl shadow-lg aspect-square object-cover">
+            </div>
+            <p class="text-gray-600 mt-4">A few of our favorite moments! See them all in the main album.</p>
+        </section>
+
+        <!-- New HTML Menu Section with SVG Icons -->
+        <section id="menu" class="mb-12 custom-card">
+            <h3 class="font-great-vibes text-6xl text-brand-pink mb-2">Menu</h3>
+            <p class="text-sm text-gray-500 mb-8"><span class="font-bold text-gray-400">#RiFil</span> For the stories you'll tell tomorrow.</p>
+
+            <div class="space-y-8 text-left">
+                <!-- Jungle Juice -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 flex-shrink-0">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <g transform="rotate(15 50 50)">
+                                <rect x="15" y="15" width="70" height="70" rx="10" fill="#F87171"/>
+                                <circle cx="35" cy="35" r="8" fill="rgba(255,255,255,0.5)"/>
+                                <rect x="50" y="50" width="25" height="25" rx="5" fill="rgba(0,0,0,0.2)" transform="rotate(45 62.5 62.5)"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Jungle Juice</h4>
+                        <p class="text-sm text-gray-600">White Rum | Vodka | Cranberry</p>
+                        <p class="text-sm text-gray-500 mt-1">Fruity and boozy with a refreshing cranberry base.</p>
+                    </div>
+                </div>
+                <!-- Madras Mojito -->
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 flex-shrink-0">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                             <g transform="rotate(-10 50 50)">
+                                <rect x="15" y="15" width="70" height="70" rx="10" fill="#FBBF24"/>
+                                <circle cx="70" cy="30" r="12" fill="#A3E635"/>
+                                <path d="M 30 60 L 40 45 L 50 60 Z" fill="rgba(0,0,0,0.2)"/>
+                                <path d="M 50 70 L 60 55 L 70 70 Z" fill="rgba(0,0,0,0.2)"/>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Madras Mojito</h4>
+                        <p class="text-sm text-gray-600">White Rum | Nannari Syrup | Lime</p>
+                        <p class="text-sm text-gray-500 mt-1">A South Indian twist on the mojito with cooling nannari and lime.</p>
+                    </div>
+                </div>
+                <!-- Cinnafully Wedded -->
+                <div class="flex items-center space-x-4">
+                     <div class="w-16 h-16 flex-shrink-0">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <path d="M 20 90 L 25 20 H 75 L 80 90 Z" fill="#FB923C"/>
+                            <ellipse cx="50" cy="20" rx="28" ry="8" fill="#FDBA74"/>
+                            <circle cx="35" cy="40" r="10" fill="#F97316"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Cinnafully Wedded</h4>
+                        <p class="text-sm text-gray-600">Cinnamon Whiskey | Pineapple | Lime | Spice</p>
+                        <p class="text-sm text-gray-500 mt-1">Warm, spiced, and tropical with a citrusy finish.</p>
+                    </div>
+                </div>
+                <!-- Something Blue -->
+                <div class="flex items-center space-x-4">
+                     <div class="w-16 h-16 flex-shrink-0">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <rect x="25" y="20" width="50" height="70" rx="10" fill="#818CF8"/>
+                            <rect x="25" y="15" width="50" height="10" rx="5" fill="#A5B4FC"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">Something Blue</h4>
+                        <p class="text-sm text-gray-600">Gin | Blue Pea Tea | Tonic</p>
+                        <p class="text-sm text-gray-500 mt-1">Floral, light, and botanical with a striking blue hue.</p>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xs text-gray-400 mt-8 italic">Not feeling adventurous? Ask for classic cocktails or shots.</p>
+        </section>
+
     </div>
 
     <script>
         const fileInput = document.getElementById('photo-upload');
         const instructionText = document.getElementById('instruction-text');
         
-        // Give feedback when a photo is taken.
+        // Give feedback to the user after they take a photo.
         fileInput.addEventListener('change', function() {
             if (this.files && this.files.length > 0) {
                 instructionText.textContent = 'Great shot! Now tap Step 2.';
                 
-                // Clear the message after a few seconds
+                // Clear the message after a few seconds to keep the UI clean
                 setTimeout(() => {
                     instructionText.textContent = '';
                 }, 4000);
